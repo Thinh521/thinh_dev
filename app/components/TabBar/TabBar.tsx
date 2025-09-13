@@ -1,44 +1,46 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import {
-  HomeIcon,
-  UserIcon,
   ContactIcon,
+  HomeIcon,
   EducationIcon,
   MusicIcon,
   PhotoIcon,
   ProjectIcon,
+  UserIcon,
   WritingIcon,
-} from "../../../public/assets/icons/Icons";
-// import DarkModeToggle from "./DarkModeToggle";
-import Loading from "../Loading/Loading";
-import styles from "./TabBar.module.css";
+} from "@/public/assets/icons/Icons";
 
-const navItems = [
-  { href: "/", title: "Home", icon: HomeIcon },
-  { href: "/about", title: "About", icon: UserIcon },
-  { href: "/project", title: "Project", icon: ProjectIcon },
-  { href: "/education", title: "Education", icon: EducationIcon },
-  { href: "/photo", title: "Photo", icon: PhotoIcon },
-  { href: "/music", title: "Music", icon: MusicIcon },
-  { href: "/write", title: "Writing", icon: WritingIcon },
-  { href: "/contact", title: "Contact", icon: ContactIcon },
+type NavItem = {
+  to: string;
+  title: string;
+  icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+};
+
+const navItems: NavItem[] = [
+  { to: "/", title: "Home", icon: HomeIcon },
+  { to: "/about", title: "About", icon: UserIcon },
+  { to: "/project", title: "Project", icon: ProjectIcon },
+  { to: "/education", title: "Education", icon: EducationIcon },
+  { to: "/photo", title: "Photo", icon: PhotoIcon },
+  { to: "/music", title: "Music", icon: MusicIcon },
+  { to: "/writing", title: "Writing", icon: WritingIcon },
+  { to: "/contact", title: "Contact", icon: ContactIcon },
 ];
 
-export default function TabBar() {
+const TabBar = () => {
+  const [isMounted, setIsMounted] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+
   const pathname = usePathname();
   const router = useRouter();
 
-  const [isMounted, setIsMounted] = useState(false);
-  const [loadingItem, setLoadingItem] = useState<string | null>(null);
-  const [showNavbar, setShowNavbar] = useState(true);
-
   useEffect(() => {
     setIsMounted(true);
-
     const initialHeight = window.innerHeight;
+
     const handleResize = () => {
       const currentHeight = window.innerHeight;
       if (initialHeight - currentHeight > 150) {
@@ -57,11 +59,7 @@ export default function TabBar() {
 
   const handleNavigation = (to: string) => {
     if (pathname !== to) {
-      setLoadingItem(to);
-      setTimeout(() => {
-        router.push(to);
-        setLoadingItem(null);
-      }, 300);
+      router.push(to);
     }
   };
 
@@ -69,54 +67,51 @@ export default function TabBar() {
 
   return (
     <nav
-      className={`${
-        styles["navbar-container"]
-      } fixed bottom-0 left-0 right-0 bg-white dark:bg-neutral-900 shadow-md transition-all ${
-        isMounted ? styles["navbar-visible"] : styles["navbar-hidden"]
-      }`}
+      className={`navbar-container fixed bottom-4 md:bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 rounded-xl 
+      bg-gray-100 dark:bg-neutral-900 border border-gray-300 dark:border-neutral-700 
+      p-3 shadow-md z-40 max-w-[calc(100vw-20px)] overflow-x-auto transition-all duration-500 hide-scrollbar
+      ${isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
     >
-      <ul className="flex items-center justify-center gap-4 py-2">
+      <ul className="flex items-center justify-center gap-3 px-1 w-max">
         {navItems.map((item) => {
-          const isActive = pathname === item.href;
-          const isLoading = loadingItem === item.href;
-          const Icon = item.icon;
+          const isActive = pathname === item.to;
+          const IconComponent = item.icon;
 
           return (
-            <li key={item.href} className="flex-shrink-0 relative">
+            <li key={item.to} className="relative flex-shrink-0">
               <button
-                onClick={() => handleNavigation(item.href)}
+                onClick={() => handleNavigation(item.to)}
                 aria-label={item.title}
                 aria-current={isActive ? "page" : undefined}
-                className={`flex flex-col items-center px-3 py-1 rounded-md ${
-                  isActive ? "text-blue-600" : "text-gray-600"
-                }`}
-              >
-                <div className="h-6 w-6 flex items-center justify-center">
-                  {isLoading ? (
-                    <Loading />
-                  ) : (
-                    <Icon
-                      className={`w-6 h-6 ${
-                        isActive ? "fill-blue-600" : "fill-gray-500"
-                      }`}
-                    />
-                  )}
-                </div>
-                <span
-                  className={`mt-1 text-xs ${
-                    isActive ? "font-bold" : "font-normal"
+                className={`w-11 h-11 flex items-center justify-center rounded-md transition-all duration-300 shadow-md p-2 cursor-pointer
+                  ${
+                    isActive
+                      ? "bg-gray-300 dark:bg-neutral-300 scale-110"
+                      : "bg-gray-200 dark:bg-neutral-700 hover:bg-gray-50 dark:hover:bg-neutral-600"
                   }`}
-                >
-                  {item.title}
-                </span>
+              >
+                <IconComponent
+                  className={`w-6 h-6 transition-colors ${
+                    isActive
+                      ? "text-gray-800 dark:text-neutral-800"
+                      : "text-gray-600 dark:text-neutral-400"
+                  }`}
+                />
+                <span
+                  className={`absolute -bottom-2 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full transition-opacity duration-300 
+                    ${
+                      isActive
+                        ? "opacity-100 bg-neutral-500 dark:bg-neutral-50"
+                        : "opacity-0"
+                    }`}
+                />
               </button>
             </li>
           );
         })}
-        {/* <li>
-          <DarkModeToggle />
-        </li> */}
       </ul>
     </nav>
   );
-}
+};
+
+export default TabBar;

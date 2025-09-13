@@ -14,8 +14,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} min-h-screen flex flex-col`}>
-        <main className="flex-1 pb-16">{children}</main>
+      <body className={`${playfair.variable} min-h-screen`}>
+        <main>{children}</main>
         <TabBar />
       </body>
     </html>
