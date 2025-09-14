@@ -4,6 +4,7 @@ import MacBookAnimation from "./components/Macbook/Macbook";
 import SocialLinks from "./components/SocialLinks/SocialLinks";
 import Header from "./components/Header/Header";
 import Button from "./components/Button/Button";
+import Divider from "./components/Divider/Divider";
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
           <span className="w-1 h-5 bg-gradient-to-b from-gray-700 to-gray-500 rounded-full"></span>
           Giới thiệu
         </h1>
-        <p className="text-sm text-justify leading-relaxed text-gray-500 dark:text-gray-400">
+        <p className="text-sm text-justify leading-relaxed text-gray-600 dark:text-gray-400">
           Xin chào, tớ là Nguyễn Phúc Thịnh. Hiện tại tớ đang là sinh viên
           chuyên ngành Thiết Kế Trang Web tại Trường Cao Đẳng Công Nghệ Thông
           Tin TP.HCM (ITC). Với niềm đam mê sâu sắc với lập trình và sáng tạo
@@ -31,16 +32,20 @@ export default function Home() {
       </section>
 
       <section className="mb-12">
-        <div className="border-t border-dashed border-gray-300 dark:border-neutral-700 w-auto"></div>
+        <Divider />
       </section>
 
       <section className="mb-12">
         <MacBookAnimation />
       </section>
 
+      <section className="mb-5">
+        <Divider />
+      </section>
+
       <section className="mb-6">
         <div className="flex flex-col gap-6">
-          <Button href="/contact">Resume</Button>
+          <Button href="/contact">Xem Resume</Button>
 
           <div className="flex-1">
             <h1 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white flex items-center gap-2">
@@ -53,7 +58,7 @@ export default function Home() {
       </section>
 
       <section className="mb-5">
-        <div className="border-t border-dashed border-gray-300 dark:border-neutral-700 w-auto"></div>
+        <Divider />
       </section>
     </article>
   );

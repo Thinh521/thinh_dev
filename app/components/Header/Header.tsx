@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Divider from "../Divider/Divider";
 
 interface HeaderProps {
   name: string;
@@ -18,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ name, subtitle }) => {
       </header>
 
       <section className="mb-5">
-        <div className="border-t border-dashed border-gray-300 dark:border-neutral-700 w-auto"></div>
+        <Divider />
       </section>
     </>
   );
