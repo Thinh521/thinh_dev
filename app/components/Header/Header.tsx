@@ -15,7 +15,9 @@ const Header: React.FC<HeaderProps> = ({ name, subtitle }) => {
         <h1 className="font-playfair text-3xl font-bold mb-3 text-gray-900 dark:text-white tracking-tight text-left">
           {name}
         </h1>
-        <p className="text-sm text-left">{subtitle}</p>
+        <p className="text-sm text-left text-gray-600 dark:text-gray-400">
+          {subtitle}
+        </p>
       </header>
 
       <section className="mb-5">

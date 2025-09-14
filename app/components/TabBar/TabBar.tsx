@@ -12,6 +12,7 @@ import {
   UserIcon,
   WritingIcon,
 } from "@/public/assets/icons/Icons";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 type NavItem = {
   to: string;
@@ -109,6 +110,9 @@ const TabBar = () => {
             </li>
           );
         })}
+        <li>
+          <ThemeToggle />
+        </li>
       </ul>
     </nav>
   );

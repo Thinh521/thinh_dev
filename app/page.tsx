@@ -8,7 +8,7 @@ import Divider from "./components/Divider/Divider";
 
 export default function Home() {
   return (
-    <article>
+    <article className="dark:bg-neutral-900 dark:text-white">
       <Header
         name="Nguyễn Phúc Thịnh"
         subtitle="Mobile App Developer • Freelancer"
