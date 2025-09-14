@@ -4,22 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { IMAGES } from "@/public/assets/images/images";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
+import Header from "../components/Header/Header";
 
 const AboutPage = () => {
   return (
     <article>
-      <header className="text-center mb-5">
-        <h1 className="font-playfair text-3xl font-bold mb-3 text-gray-900 dark:text-white tracking-tight text-left">
-          Giới thiệu
-        </h1>
-        <p className="text-sm text-left">
-          Một chút thú vị về tớ và những điều lớn lao
-        </p>
-      </header>
-
-      <section className="mb-5">
-        <div className="border-t border-dashed border-gray-300 dark:border-neutral-700 w-auto"></div>
-      </section>
+      <Header
+        name="Giới thiệu"
+        subtitle="Một chút thú vị về tớ và những điều lớn lao"
+      />
 
       <section className="flex justify-center">
         <div className="text-center my-2">

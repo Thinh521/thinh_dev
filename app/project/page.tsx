@@ -1,3 +1,14 @@
+import TimelinePage2 from "../components/Experience/Experience";
+import Header from "../components/Header/Header";
+
 export default function ProjectPage() {
-  return <h1 className="p-4">Project Page</h1>;
+  return (
+    <article>
+      <Header
+        name="Dự án"
+        subtitle="Những dự án lập trình cá nhân / pet projects của tớ"
+      />
+      <TimelinePage2 />
+    </article>
+  );
 }

@@ -1,22 +1,17 @@
 "use client";
 
-import Link from "next/link";
 import MacBookAnimation from "./components/Macbook/Macbook";
 import SocialLinks from "./components/SocialLinks/SocialLinks";
+import Header from "./components/Header/Header";
+import Button from "./components/Button/Button";
 
 export default function Home() {
   return (
     <article>
-      <header className="text-center mb-5">
-        <h1 className="font-playfair text-3xl font-bold mb-3 text-gray-900 dark:text-white tracking-tight text-left">
-          Nguyễn Phúc Thịnh
-        </h1>
-        <p className="text-sm text-left">Mobile App Developer • Freelancer</p>
-      </header>
-
-      <section className="mb-5">
-        <div className="border-t border-dashed border-gray-300 dark:border-neutral-700 w-auto"></div>
-      </section>
+      <Header
+        name="Nguyễn Phúc Thịnh"
+        subtitle="Mobile App Developer • Freelancer"
+      />
 
       <section className="mb-5">
         <h1 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white flex items-center gap-2">
@@ -45,22 +40,7 @@ export default function Home() {
 
       <section className="mb-6">
         <div className="flex flex-col gap-6">
-          <Link
-            href="/cv"
-            className="group w-max relative inline-flex items-center gap-2 
-                 bg-gradient-to-r from-gray-800 to-gray-700 
-                 hover:from-gray-700 hover:to-gray-600
-                 dark:from-gray-100 dark:to-gray-200
-                 dark:hover:from-white dark:hover:to-gray-100
-                 text-white dark:text-gray-800 
-                 px-6 py-2.5 rounded-xl font-medium
-                 transition-all duration-300 ease-in-out text-base
-                 transform hover:scale-105 hover:shadow-lg
-                 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
-            aria-label="Xem CV của tôi"
-          >
-            <span className="text-sm">Resume</span>
-          </Link>
+          <Button href="/contact">Resume</Button>
 
           <div className="flex-1">
             <h1 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white flex items-center gap-2">
