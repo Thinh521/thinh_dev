@@ -1,10 +1,29 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { IMAGES } from "@/public/assets/images/images";
 import SocialLinks from "../components/SocialLinks/SocialLinks";
 import Header from "../components/Header/Header";
+import Button from "../components/Button/Button";
+
+const aboutItems = [
+  {
+    icon: "💻",
+    text: "Đam mê lập trình & thiết kế UI/UX",
+  },
+  {
+    icon: "📸",
+    text: "Yêu thích nhiếp ảnh & quay phim",
+  },
+  {
+    icon: "🎓",
+    text: "Sinh viên Thiết kế Web tại ITC",
+  },
+  {
+    icon: "🏙️",
+    text: "Sống và làm việc tại TP.HCM",
+  },
+];
 
 const AboutPage = () => {
   return (
@@ -34,22 +53,9 @@ const AboutPage = () => {
 
       <section className="mb-6">
         <div className="flex flex-col gap-6">
-          <Link
-            href="/cv"
-            className="group w-max relative inline-flex items-center gap-2 mx-auto
-              bg-gradient-to-r from-gray-800 to-gray-700 
-              hover:from-gray-700 hover:to-gray-600
-              dark:from-gray-100 dark:to-gray-200
-              dark:hover:from-white dark:hover:to-gray-100
-              text-white dark:text-gray-800 
-              px-6 py-2.5 rounded-xl font-medium
-              transition-all duration-300 ease-in-out text-base
-              transform hover:scale-105 hover:shadow-lg
-              focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
-            aria-label="Xem CV của tôi"
-          >
-            <span className="text-sm">Resume</span>
-          </Link>
+          <div className="mx-auto">
+            <Button href="/contact">Xem Resume</Button>
+          </div>
 
           <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-600"></div>
 
@@ -67,15 +73,27 @@ const AboutPage = () => {
         <div className="border-t border-dashed border-gray-300 dark:border-neutral-700 w-auto"></div>
       </section>
 
-      {/* Story */}
       <section>
         <h1 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white flex items-center gap-2">
           <span className="w-1 h-5 bg-gradient-to-b from-gray-700 to-gray-500 rounded-full"></span>
           Câu chuyện của tớ
         </h1>
-        <p className="text-sm text-justify">
+        <p className="text-sm text-justify leading-relaxed text-gray-600 dark:text-gray-400">
           Tớ xin phép được giới thiệu nhiều hơn về bản thân nhé. Tớ hiện đang
-          sống và làm việc tại TP.HCM. Tớ đang là sinh viên năm cuối...
+          sống và làm việc tại TP.HCM. Tớ đang là sinh viên năm cuối của trường
+          nên tớ thực hiện và làm những dự án để tốt nghiệp. Website này cũng là
+          những dự án mà tớ tâm huyết nhất. Mục đích của nó dùng để giới thiệu
+          về bản thân của tớ, giới thiệu về các dự án và xem dự án và học vấn
+          của tớ. Cùng với đó là những hình ảnh âm nhạc và những câu chuyện của
+          tớ đã trải qua và những thứ tớ đạt được trong cuộc sống. Tớ rất thích
+          với việc lập trình giao diện và tớ cũng đang tự học thêm nhiều ngôn
+          ngữ lập trình để làm được những website hoàn chỉnh và hiện đại, độc
+          đáo hơn. Tớ muốn và hướng đên việc trở thành một Fullstack Developer
+          chuyên nghiệp. Ngoài ra, tớ siêu thích quay phim, chụp ảnh luôn í.
+          Kiểu như tớ muốn lưu lại những khoảnh khắc đáng nhớ, đẹp nhất, dễ
+          thương nhất của tớ cùng với gia đình, người iu, bạn bè và bản thân tớ.
+          Tớ muốn truyền tải với mọi nguòi những gì mà tớ thấy và những thứ đẹp
+          nhất đáng yêu nhất qua góc kính nhiệm màu nhiệm màu của tớ.
         </p>
       </section>
 
@@ -83,37 +101,23 @@ const AboutPage = () => {
         <div className="border-t border-dashed border-gray-300 dark:border-neutral-700 w-auto"></div>
       </section>
 
-      {/* Fun Facts */}
       <div className="mt-4 dark:border-gray-700">
         <h1 className="text-lg font-semibold mb-2 text-gray-800 dark:text-white flex items-center gap-2">
           <span className="w-1 h-5 bg-gradient-to-b from-gray-700 to-gray-500 rounded-full"></span>
           Những thú vị về tớ
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="flex items-center gap-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <span className="text-xl">💻</span>
-            <span className="text-sm text-gray-700 dark:text-gray-300">
-              Đam mê lập trình & thiết kế UI/UX
-            </span>
-          </div>
-          <div className="flex items-center gap-3 p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-            <span className="text-xl">📸</span>
-            <span className="text-sm text-gray-700 dark:text-gray-300">
-              Yêu thích nhiếp ảnh & quay phim
-            </span>
-          </div>
-          <div className="flex items-center gap-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
-            <span className="text-xl">🎓</span>
-            <span className="text-sm text-gray-700 dark:text-gray-300">
-              Sinh viên Thiết kế Web tại ITC
-            </span>
-          </div>
-          <div className="flex items-center gap-3 p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-            <span className="text-xl">🏙️</span>
-            <span className="text-sm text-gray-700 dark:text-gray-300">
-              Sống và làm việc tại TP.HCM
-            </span>
-          </div>
+          {aboutItems.map((item, index) => (
+            <div
+              key={index}
+              className={`flex items-center gap-2 p-3 bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl`}
+            >
+              <span className="text-xl">{item.icon}</span>
+              <span className="text-sm text-gray-700 dark:text-gray-300">
+                {item.text}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </article>

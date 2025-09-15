@@ -27,7 +27,7 @@ const Button: React.FC<GradientButtonProps> = ({
     dark:from-gray-100 dark:to-gray-200
     dark:hover:from-white dark:hover:to-gray-100
     text-white dark:text-gray-800
-    px-6 py-2.5 rounded-xl font-medium
+    px-6 py-2 rounded-xl font-medium
     transition-all duration-300 ease-in-out text-base
     transform hover:scale-105 hover:shadow-lg
     focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2
@@ -36,7 +36,7 @@ const Button: React.FC<GradientButtonProps> = ({
   const content = (
     <>
       {leftIcon && <span className="text-lg">{leftIcon}</span>}
-      <span>{children}</span>
+      <span className="text-sm">{children}</span>
       {rightIcon && <span className="text-lg">{rightIcon}</span>}
     </>
   );
