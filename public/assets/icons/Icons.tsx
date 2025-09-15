@@ -186,3 +186,18 @@ export const ContactIcon: React.FC<IconProps> = (props) => {
     </svg>
   );
 };
+
+export const LoadingIcon: React.FC<IconProps> = ({ className }) => {
+  const bars = [8, 6, 4, 2, 4, 6, 8];
+  return (
+    <div className={`flex space-x-0.5 items-end h-8 ${className ?? ""}`}>
+      {bars.map((h, i) => (
+        <span
+          key={i}
+          className={`w-1.5 h-${h} bg-orange-600 rounded-full animate-pulse`}
+          style={{ animationDelay: `-${0.6 - i * 0.1}s` }}
+        />
+      ))}
+    </div>
+  );
+};
