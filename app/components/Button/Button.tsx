@@ -10,6 +10,8 @@ interface GradientButtonProps {
   onClick?: () => void;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
+  className?: string;
+  external?: boolean;
 }
 
 const Button: React.FC<GradientButtonProps> = ({
@@ -19,9 +21,11 @@ const Button: React.FC<GradientButtonProps> = ({
   onClick,
   leftIcon,
   rightIcon,
+  className = "",
+  external = false,
 }) => {
-  const classes = `
-    group w-max relative inline-flex items-center gap-2
+  const baseClasses = `
+    group relative flex items-center justify-center gap-2
     bg-gradient-to-r from-gray-800 to-gray-700
     hover:from-gray-700 hover:to-gray-600
     dark:from-gray-100 dark:to-gray-200
@@ -42,8 +46,26 @@ const Button: React.FC<GradientButtonProps> = ({
   );
 
   if (href) {
+    if (external) {
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${baseClasses} ${className}`}
+          aria-label={ariaLabel}
+        >
+          {content}
+        </a>
+      );
+    }
+
     return (
-      <Link href={href} className={classes} aria-label={ariaLabel}>
+      <Link
+        href={href}
+        className={`${baseClasses} ${className}`}
+        aria-label={ariaLabel}
+      >
         {content}
       </Link>
     );
@@ -51,7 +73,7 @@ const Button: React.FC<GradientButtonProps> = ({
 
   return (
     <button
-      className={classes}
+      className={`${baseClasses} ${className}`}
       aria-label={ariaLabel}
       onClick={onClick}
       type="button"

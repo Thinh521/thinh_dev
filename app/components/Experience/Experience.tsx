@@ -1,6 +1,9 @@
 "use client";
 
+import { IMAGES } from "@/public/assets/images/images";
+import Image from "next/image";
 import React, { memo, useCallback, useState } from "react";
+import Button from "../Button/Button";
 
 // Helper components with refined icons
 const ChevronDown = (props: React.SVGProps<SVGSVGElement>) => (
@@ -89,14 +92,21 @@ const Badge = ({
 // --- TYPES ---
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
+interface TimelineLink {
+  label: string;
+  url: string;
+}
+
 interface TimelineItemData {
   id: string;
   title: string;
   type: string;
   duration: string;
+  images: string;
   icon: IconType;
   responsibilities: string[];
   skills: string[];
+  links?: TimelineLink[];
 }
 
 type ExpandMode = "multi" | "single";
@@ -107,48 +117,158 @@ interface ProfessionalTimelineProps {
   expandMode?: ExpandMode;
 }
 
-// --- MOCK DATA ---
 const timelineData: TimelineItemData[] = [
   {
     id: "prof-exp-1",
     title: "Senior Frontend Developer",
     type: "Full-time",
-    duration: "10.2022—Present",
+    duration: "10.2024—Present",
+    images: "project_1",
     icon: Code,
     responsibilities: [
-      "Lead development of complex React applications with TypeScript.",
-      "Architect scalable frontend solutions using Next.js and modern tooling.",
-      "Mentor junior developers and conduct code reviews.",
-      "Collaborate with design and backend teams to deliver high-quality products.",
+      "Xây dựng website giới thiệu nhà hàng với HTML, CSS và JavaScript, tập trung vào giao diện trực quan và thân thiện với người dùng.",
+      "Thiết kế giao diện responsive, đảm bảo trải nghiệm tốt trên cả máy tính và thiết bị di động.",
+      "Học cách quản lý và tối ưu mã nguồn, tuân thủ các tiêu chuẩn về HTML semantic và CSS hiện đại.",
     ],
-    skills: ["React", "TypeScript", "Next.js", "Tailwind CSS", "GraphQL"],
+    skills: ["HTML, CSS", "JavaScript"],
+    links: [
+      {
+        label: "Xem Github",
+        url: "https://github.com/Thinh521/Restaurant_Frontend",
+      },
+      {
+        label: "Xem Dự án",
+        url: "https://thinh521.github.io/Restaurant_Frontend/",
+      },
+    ],
   },
   {
     id: "prof-exp-2",
-    title: "UI Design Lead",
+    title: "Senior Frontend Developer",
     type: "Full-time",
     duration: "10.2022—Present",
+    images: "project_2",
     icon: Palette,
     responsibilities: [
-      "Ensure UI/UX consistency and high-quality standards.",
-      "Design intuitive, user-focused interfaces aligned with business goals.",
-      "Define and establish a cohesive UI style for the company.",
+      "Xây dựng website giới thiệu các khóa học trực tuyến bằng HTML, CSS và JavaScript, tập trung vào giao diện rõ ràng và dễ tiếp cận cho người học.",
+      "Thiết kế giao diện responsive, đảm bảo hiển thị tốt trên cả máy tính và thiết bị di động để nâng cao trải nghiệm học tập.",
+      "Rèn luyện kỹ năng quản lý và tối ưu mã nguồn, áp dụng HTML semantic và các kỹ thuật CSS hiện đại nhằm tăng tính chuẩn hóa và dễ bảo trì.",
     ],
-    skills: ["Creativity", "UI/UX Design", "Figma"],
+    skills: ["HTML, CSS", "JavaScript", "Figma"],
+    links: [
+      {
+        label: "Xem Github",
+        url: "https://github.com/Thinh521/TuHoc_Clone",
+      },
+      {
+        label: "Xem Dự án",
+        url: "https://thinh521.github.io/TuHoc_Clone/",
+      },
+    ],
   },
   {
     id: "prof-exp-3",
-    title: "Frontend Developer",
+    title: "Mobile App Developer (React Native)",
     type: "Full-time",
     duration: "03.2021—09.2022",
+    images: "project_1",
     icon: Code,
     responsibilities: [
-      "Developed responsive web applications using React and Vue.js.",
-      "Implemented pixel-perfect designs from Figma mockups.",
-      "Optimized application performance and user experience.",
-      "Collaborated in an agile development environment.",
+      "Phát triển ứng dụng di động thống kê và quản lý thị trường nông sản bằng React Native, đảm bảo giao diện trực quan và hiệu năng ổn định.",
+      "Tích hợp AI để phân tích dữ liệu thị trường, dự đoán xu hướng cung cầu và biến động giá cả.",
+      "Xây dựng hệ thống xử lý Big Data để thu thập và quản lý lượng lớn dữ liệu về sản xuất, tiêu thụ và giá nông sản.",
+      "Thiết kế và triển khai dashboard báo cáo, cung cấp thông tin trực quan về các vùng trồng trọt, mùa vụ và tình hình thị trường.",
+      "Phát triển hệ thống cảnh báo khi có biến động lớn về cung cầu hoặc giá cả, hỗ trợ nhà quản lý đưa ra quyết định kinh doanh kịp thời.",
+      "Phối hợp cùng team theo mô hình Agile, từ giai đoạn thu thập dữ liệu, xây dựng mô hình AI cho đến kiểm thử và triển khai phiên bản beta.",
     ],
-    skills: ["React", "Vue.js", "JavaScript", "CSS", "HTML"],
+    skills: [
+      "React Native",
+      "JavaScript",
+      "AI/ML",
+      "Big Data",
+      "Node.js",
+      "Express",
+      "MongoDB",
+    ],
+    links: [
+      {
+        label: "Xem Github",
+        url: "https://github.com/Thinh521/Pione_Farm",
+      },
+      {
+        label: "Xem Dự án",
+        url: "https://github.com/Thinh521/Pione_Farm",
+      },
+    ],
+  },
+  {
+    id: "prof-exp-4",
+    title: "Mobile App Developer (React Native)",
+    type: "Full-time",
+    duration: "03.2021—09.2022",
+    images: "project_2",
+    icon: Code,
+    responsibilities: [
+      "Phát triển ứng dụng di động truy xuất nguồn gốc nông sản bằng React Native, đảm bảo giao diện trực quan và dễ sử dụng cho nhà phân phối và người tiêu dùng.",
+      "Tích hợp công nghệ Blockchain để lưu trữ dữ liệu nguồn gốc, đảm bảo tính minh bạch và không thể thay đổi.",
+      "Xây dựng và triển khai Smart Contracts để tự động hóa quy trình xác nhận nguồn gốc và kiểm tra tính hợp lệ của sản phẩm.",
+      "Phát triển tính năng quét mã QR/nhập mã sản phẩm, hiển thị chi tiết về quá trình trồng trọt, thu hoạch, vận chuyển và chứng nhận chất lượng.",
+      "Thiết kế hệ thống cảnh báo khi phát hiện dấu hiệu giả mạo hoặc sai lệch thông tin nguồn gốc.",
+      "Phối hợp nhóm theo mô hình Agile, tham gia từ giai đoạn thiết kế giao diện, phát triển tính năng đến kiểm thử và triển khai bản beta.",
+    ],
+    skills: [
+      "React Native",
+      "JavaScript",
+      "Blockchain",
+      "Smart Contracts / Web3",
+      "Node.js",
+      "Express",
+      "MongoDB",
+    ],
+    links: [
+      {
+        label: "Xem Github",
+        url: "https://github.com/Thinh521/Blockchain_Farm",
+      },
+      {
+        label: "Xem Dự án",
+        url: "https://github.com/Thinh521/Blockchain_Farm",
+      },
+    ],
+  },
+  {
+    id: "prof-exp-5",
+    title: "Mobile App Developer (React Native)",
+    type: "Full-time",
+    duration: "03.2021—09.2022",
+    images: "project_1",
+    icon: Code,
+    responsibilities: [
+      "Phát triển ứng dụng mua sắm quần áo bằng React Native, xây dựng giao diện trực quan và thân thiện với người dùng.",
+      "Xây dựng các tính năng chính: danh mục sản phẩm, tìm kiếm, giỏ hàng, thanh toán và quản lý đơn hàng.",
+      "Tích hợp API backend để lấy dữ liệu sản phẩm, xử lý đăng nhập/đăng ký và quản lý thông tin người dùng.",
+      "Thiết kế giao diện responsive, tối ưu trải nghiệm trên cả Android và iOS.",
+      "Tối ưu hiệu năng ứng dụng, xử lý state management cho giỏ hàng và luồng đặt hàng.",
+      "Làm việc theo mô hình Agile, phối hợp với team trong suốt quá trình phát triển và triển khai.",
+    ],
+    skills: [
+      "React Native",
+      "JavaScript",
+      "REST API",
+      "State Management",
+      "UI/UX",
+      "Figma",
+    ],
+    links: [
+      {
+        label: "Xem Github",
+        url: "https://github.com/Thinh521/Fashion_Shop_App",
+      },
+      {
+        label: "Xem Dự án",
+        url: "https://github.com/Thinh521/Fashion_Shop_App",
+      },
+    ],
   },
 ];
 
@@ -162,6 +282,17 @@ const TimelineItemContent = memo(function TimelineItemContent({
 }: TimelineItemContentProps) {
   return (
     <div className="mt-6 space-y-6 animate-in slide-in-from-top-1 duration-200">
+      {/* Images */}
+      <Image
+        src={IMAGES[item.images]}
+        alt={item.title}
+        width={0}
+        height={0}
+        sizes="100vw"
+        style={{ width: "100%", height: "auto" }}
+        className="object-contain"
+      />
+
       {/* Responsibilities */}
       <div className="space-y-3">
         {item.responsibilities.map((responsibility, idx) => (
@@ -185,6 +316,20 @@ const TimelineItemContent = memo(function TimelineItemContent({
           </Badge>
         ))}
       </div>
+
+      {item.links && item.links.length > 0 && (
+        <div className="flex gap-4">
+          {item.links.map((link, idx) => (
+            <Button
+              key={`${item.id}-link-${idx}`}
+              href={link.url}
+              className="flex-1 text-center"
+            >
+              {link.label}
+            </Button>
+          ))}
+        </div>
+      )}
     </div>
   );
 });
