@@ -1,9 +1,7 @@
-"use client";
-
 import React from "react";
 import styles from "./Macbook.module.css";
 
-const Macbook: React.FC = () => {
+const Macbook = () => {
   return (
     <div className="flex justify-center items-center w-full h-full">
       <div className={styles.macbook}>
